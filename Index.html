@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NBA MVP Watch 2026 — Top 6 Candidates</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">NBA MVP Watch — 2026</div>
+        <div class="navlinks">
+          <a href="#home">Home</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <div class="hero">
+      <div class="card">
+        <h1>Top 6 NBA MVP Candidates (2026)</h1>
+        <p>
+          A clean, single-page site that showcases the leading MVP candidates with photos, quick facts,
+          and a simple “MVP Watch” layout.
+        </p>
+
+        <div class="row">
+          <span class="pill" id="asOf">📅 As of: --</span>
+          <span class="pill" id="announce">🏆 MVP announcement: TBD</span>
+          <span class="pill">📰 Source: NBA.com Kia MVP Ladder</span>
+        </div>
+
+        <div class="controls">
+          <div class="controls-left">
+            <input id="search" type="text" placeholder="Search a player or team…" />
+            <select id="sort">
+              <option value="rank-asc">Sort: Rank (1 → 6)</option>
+              <option value="rank-desc">Sort: Rank (6 → 1)</option>
+              <option value="name-asc">Sort: Name (A → Z)</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="tiny" style="margin-top:10px;">
+          Tip: click any player card to open a bigger photo + details.
+        </p>
+      </div>
+    </div>
+
+    <section id="candidates">
+      <h2>Candidates</h2>
+      <div class="grid" id="grid"></div>
+    </section>
+
+  </main>
+
+  <script>
+    // Top 6 based on NBA.com Kia MVP Ladder (Feb 27, 2026 update).
+    // Images use NBA's public headshot CDN by player ID (same ID in their NBA.com player URL).
+    const candidates = [
+      {
+        rank: 1,
+        name: "Shai Gilgeous-Alexander",
+        team: "Oklahoma City Thunder",
+        id: "1628983",
+        blurb: "Elite scoring + efficient two-way impact while keeping OKC near the top of the West.",
+        facts: ["Rank: #1 on MVP Ladder", "Role: Lead guard", "Known for: scoring + defense"]
+      },
+      {
+        rank: 2,
+        name: "Nikola Jokić",
+        team: "Denver Nuggets",
+        id: "203999",
+        blurb: "All-time level playmaking big — production across points, boards, and assists.",
+        facts: ["Rank: #2 on MVP Ladder", "Role: Center", "Known for: passing + triple-doubles"]
+      },
+      {
+        rank: 3,
+        name: "Cade Cunningham",
+        team: "Detroit Pistons",
+        id: "1630595",
+        blurb: "Big guard driving Detroit’s success with scoring, playmaking, and leadership.",
+        facts: ["Rank: #3 on MVP Ladder", "Role: Guard", "Known for: assists + clutch creation"]
+      },
+      {
+        rank: 4,
+        name: "Victor Wembanyama",
+        team: "San Antonio Spurs",
+        id: "1641705",
+        blurb: "Game-changing rim protection plus growing offensive dominance — huge two-way ceiling.",
+        facts: ["Rank: #4 on MVP Ladder", "Role: Forward-Center", "Known for: blocks + impact"]
+      },
+      {
+        rank: 5,
+        name: "Luka Dončić",
+        team: "Los Angeles Lakers",
+        id: "1629029",
+        blurb: "An offensive engine: scoring, passing, and rebounding at superstar volume.",
+        facts: ["Rank: #5 on MVP Ladder", "Role: Forward-Guard", "Known for: scoring + playmaking"]
+      },
+      {
+        rank: 6,
+        name: "Jaylen Brown",
+        team: "Boston Celtics",
+        id: "1627759",
+        blurb: "Two-way star leading Boston’s push — scoring, defense, and physicality.",
+        facts: ["Rank: #6 on MVP Ladder", "Role: Guard-Forward", "Known for: two-way impact"]
+      }
+    ];
+
+    const headshot = (playerId) =>
+      `https://cdn.nba.com/headshots/nba/latest/1040x760/${playerId}.png`;
+
+    // Set homepage labels
+    const today = new Date();
+    document.getElementById("asOf").textContent = "📅 As of: " + today.toLocaleDateString();
+
+    // MVP announcement date: not always fixed in advance -> leave TBD (user can edit later)
+    document.getElementById("announce").textContent = "🏆 MVP announcement: TBD (usually during playoffs)";
+
+    // Render cards
+    const grid = document.getElementById("grid");
+    const searchEl = document.getElementById("search");
+    const sortEl = document.getElementById("sort");
+    
+    function render(list){
+      grid.innerHTML = "";
+      list.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "card player";
+        card.tabIndex = 0;
+        card.setAttribute("role", "button");
+        card.setAttribute("aria-label", `Open details for ${p.name}`);
+        card.innerHTML = `
+          <div class="headshot">
+            <img src="${headshot(p.id)}" alt="${p.name} headshot" loading="lazy" />
+          </div>
+          <div class="meta">
+            <h3 class="name">${p.name}</h3>
+            <div class="sub">${p.team}</div>
+            <div class="badges">
+              <span class="rank">MVP Ladder: #${p.rank}</span>
+              <span class="pill">📸 Headshot</span>
+            </div>
+            <p style="margin:10px 0 0; color:var(--muted); font-size:13px;">
+              ${p.blurb}
+            </p>
+          </div>
+        `;
+        card.addEventListener("click", () => {
+  if (p.name === "Shai Gilgeous-Alexander") window.location.href = "sga.html";
+  if (p.name === "Nikola Jokić") window.location.href = "jokic.html";
+  if (p.name === "Cade Cunningham") window.location.href = "cunningham.html";
+  if (p.name === "Victor Wembanyama") window.location.href = "wembanyama.html";
+  if (p.name === "Luka Dončić") window.location.href = "doncic.html";
+  if (p.name === "Jaylen Brown") window.location.href = "brown.html";
+});
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openModal(p); }
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    function getFiltered(){
+      const q = searchEl.value.trim().toLowerCase();
+      let list = candidates.filter(p =>
+        p.name.toLowerCase().includes(q) || p.team.toLowerCase().includes(q)
+      );
+
+      const sort = sortEl.value;
+      if (sort === "rank-asc") list.sort((a,b)=>a.rank-b.rank);
+      if (sort === "rank-desc") list.sort((a,b)=>b.rank-a.rank);
+      if (sort === "name-asc") list.sort((a,b)=>a.name.localeCompare(b.name));
+      return list;
+    }
+
+    searchEl.addEventListener("input", ()=>render(getFiltered()));
+    sortEl.addEventListener("change", ()=>render(getFiltered()));
+    render(getFiltered());
+
+    // Theme toggle
+    let dark = true;
+    document.getElementById("toggleTheme").addEventListener("click", () => {
+      dark = !dark;
+      document.documentElement.style.setProperty("--bg", dark ? "#0b0f17" : "#f6f7fb");
+      document.documentElement.style.setProperty("--card", dark ? "#111827" : "#ffffff");
+      document.documentElement.style.setProperty("--text", dark ? "#e5e7eb" : "#0b1220");
+      document.documentElement.style.setProperty("--muted", dark ? "#9ca3af" : "#4b5563");
+      document.documentElement.style.setProperty("--border", dark ? "rgba(255,255,255,.10)" : "rgba(0,0,0,.12)");
+    });
+
+    // Modal
+    const backdrop = document.getElementById("backdrop");
+    const closeBtn = document.getElementById("closeBtn");
+
+    function openModal(p){
+      document.getElementById("modalTitle").textContent = `Player details — #${p.rank}`;
+      document.getElementById("modalName").textContent = p.name;
+      document.getElementById("modalRank").textContent = `MVP Ladder: #${p.rank}`;
+      document.getElementById("modalTeam").textContent = `🏀 ${p.team}`;
+      document.getElementById("modalBlurb").textContent = p.blurb;
+      document.getElementById("modalImg").src = headshot(p.id);
+      document.getElementById("modalImg").alt = `${p.name} headshot`;
+
+      const facts = p.facts.map(x => `• ${x}`).join("<br/>");
+      document.getElementById("modalFacts").innerHTML = facts;
+
+      backdrop.style.display = "flex";
+      backdrop.setAttribute("aria-hidden", "false");
+      closeBtn.focus();
+    }
+
+    function closeModal(){
+      backdrop.style.display = "none";
+      backdrop.setAttribute("aria-hidden", "true");
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", (e)=> { if (e.target === backdrop) closeModal(); });
+    document.addEventListener("keydown", (e)=> { if (e.key === "Escape") closeModal(); });
+
+    // Smooth scroll for nav anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  </script>
+</body>
+</html>
