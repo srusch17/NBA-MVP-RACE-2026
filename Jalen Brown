@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jaylen Brown MVP Case</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="brand">NBA MVP Watch — 2026</div>
+      <div class="navlinks">
+        <a href="index.html">Home</a>
+        <a href="sga.html">Shai</a>
+        <a href="jokic.html">Jokić</a>
+        <a href="cunningham.html">Cunningham</a>
+        <a href="wembanyama.html">Wembanyama</a>
+        <a href="doncic.html">Dončić</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="card">
+
+    <h1>Jaylen Brown</h1>
+
+    <div class="row">
+      <span class="pill">MVP Ladder Candidate</span>
+      <span class="pill">Boston Celtics</span>
+    </div>
+
+    <div style="display:flex; gap:20px; align-items:flex-start; margin-top:20px; flex-wrap:wrap;">
+
+      <!-- LEFT SIDE -->
+      <div style="flex:1; min-width:250px;">
+
+        <h2>MVP Case</h2>
+        <p>
+          A player’s MVP campaign is very often built around the load he must carry. If so, it’s not wrong to suggest no one on the Ladder did more of that than Brown. 
+          He did wonders for the Celtics and, by extension, his reputation.
+          He delivered career numbers across the board, finished fourth in scoring, improved his ball-handling and embraced the lead singer role vacated by Tatum. 
+          Essentially, Brown played an entire season at the same level as he did for two weeks in the ’24 championship when he won NBA Finals MVP.
+        </p>
+
+        <hr style="border-color:var(--border); margin:20px 0;">
+
+        <h3>Key Strengths</h3>
+        <ul>
+          <li><strong>Scoring:</strong> Powerful and efficient offensive production</li>
+          <li><strong>Defense:</strong> Strong perimeter defense against top opponents</li>
+          <li><strong>Athleticism:</strong> Explosive drives and transition play</li>
+          <li><strong>Team Impact:</strong> Major contributor on a top contender</li>
+        </ul>
+
+        <hr style="border-color:var(--border); margin:20px 0;">
+
+        <h3>2025–26 Season Highlights</h3>
+
+        <table style="width:100%; border-collapse:collapse; text-align:center;">
+          <tr>
+            <th>PPG</th>
+            <th>RPG</th>
+            <th>APG</th>
+            <th>FG%</th>
+            <th>3P%</th>
+            <th>SPG</th>
+          </tr>
+          <tr>
+            <td>26.9</td>
+            <td>6.1</td>
+            <td>3.5</td>
+            <td>49.8%</td>
+            <td>36.2%</td>
+            <td>1.4</td>
+          </tr>
+        </table>
+
+        <h3 style="margin-top:20px;">Outlook</h3>
+        <p>
+          If Brown continues leading Boston to one of the best records in the league while maintaining
+          his two-way impact, he will remain firmly in the MVP conversation. His ability to elevate his
+          play in big moments makes him a serious contender.
+        </p>
+
+        <a class="btn primary" href="https://www.nba.com" target="_blank">
+          View more on NBA.com
+        </a>
+
+      </div>
+
+      <!-- RIGHT SIDE IMAGE -->
+      <div style="flex:0 0 300px;">
+        <img 
+          src="https://cdn.nba.com/headshots/nba/latest/1040x760/1627759.png"
+          alt="Jaylen Brown"
+          style="width:100%; border-radius:16px; border:1px solid var(--border);"
+        >
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+</body>
+</html>
